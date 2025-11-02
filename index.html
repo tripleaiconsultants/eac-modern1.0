@@ -572,7 +572,31 @@
     </section><!-- /Contact Section -->
 
   </main>
+  <div id="side-popup-widget" class="side-popup-widget">
 
+    <a href="#" class="popup-open-btn">
+      <i class="bi bi-person-lines-fill"></i>
+      <span>Free Advice</span>
+    </a>
+
+    <div class="popup-content">
+
+      <a href="#" class="popup-close-btn"><i class="bi bi-x"></i></a>
+
+      <h4>Free Insurance Advice?</h4>
+      <p>Book a 15-minute meeting with Andros to see how much you can save.</p>
+      
+      <a href="tel:+35796660113" class="btn-popup-call">
+        <i class="bi bi-telephone-fill"></i>
+        Call Now
+      </a>
+      <a href="mailto:info@eacinsurance.cy" class="btn-popup-email">
+        <i class="bi bi-envelope-fill"></i>
+        Email Us
+      </a>
+
+    </div>
+  </div><footer id="footer" class="footer">
   <footer id="footer" class="footer">
 
     <div class="container footer-top">
@@ -656,7 +680,100 @@
 
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
+<script src="assets/js/main.js"></script>
 
+  <script src="https://cdn.botpress.cloud/webchat/v3.2/inject.js" defer></script>
+  <script src="https://files.bpcontent.cloud/2025/08/31/06/20250831060030-72DVBA9B.js" defer></script>
+  <script src="assets/js/main.js"></script>
+
+  <script src="https://cdn.botpress.cloud/webchat/v3.2/inject.js" defer></script>
+  <script src="https://files.bpcontent.cloud/2025/08/31/06/20250831060030-72DVBA9B.js" defer></script>
+
+  <script>
+    // This function will create our bubble
+    const createChatBubble = () => {
+      // Check if we already created our bubble
+      if (document.getElementById("custom-chat-bubble")) {
+        return; // Do nothing if it's already there
+      }
+      
+      // 1. Create a new <div> element
+      const bubble = document.createElement("div");
+      
+      // 2. Set its ID, class, and text
+      bubble.id = "custom-chat-bubble";
+      bubble.className = "custom-chat-bubble";
+      bubble.innerText = "Here to assist you!"; // <-- SET YOUR TEXT HERE
+      
+      // 3. Add our new bubble to the page
+      document.body.appendChild(bubble);
+
+      // 4. Make the bubble ALSO open the chat on click
+      bubble.addEventListener('click', () => {
+        window.botpress.open();
+      });
+
+      // 5. Add logic to hide/show the bubble when the chat is opened/closed
+      window.botpress.on('webchat:opened', () => {
+          bubble.style.display = 'none';
+      });
+      window.botEAC-Insurance-main.on('webchat:closed', () => {
+          bubble.style.display = 'block';
+      });
+    };
+
+    // This function sets up the listener
+    const setupBotListener = () => {
+      if (window.botpress && window.botpress.on) {
+        // The bot is ready, listen for the 'ready' event
+        window.botpress.on('webchat:ready', () => {
+          createChatBubble();
+        });
+      } else {
+        // The 'botpress' object isn't ready. Wait and try again.
+        setTimeout(setupBotListener, 500);
+      }
+    };
+
+    // Start the listener setup
+    setupBotListener();
+  </script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const popupWidget = document.getElementById("side-popup-widget");
+      const closeBtn = popupWidget.querySelector(".popup-close-btn");
+      const openBtn = popupWidget.querySelector(".popup-open-btn");
+
+      // 1. Show the popup after 5 seconds (like your old site)
+      setTimeout(() => {
+        // Only show it if it's not already minimized
+        if (!popupWidget.classList.contains("popup-is-minimized")) {
+          popupWidget.classList.add("popup-is-visible");
+        }
+      }, 5000);
+
+      // 2. Click 'X' to minimize it
+      closeBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        popupWidget.classList.remove("popup-is-visible");
+        popupWidget.classList.add("popup-is-minimized");
+      });
+
+      // 3. Click the tab to re-open it
+      openBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        popupWidget.classList.remove("popup-is-minimized");
+        popupWidget.classList.add("popup-is-visible");
+      });
+    });
+  </script>
+
+</body>
+</html>
+  </body>
+</html>
+</body>
+</html>
 </body>
 
 </html>

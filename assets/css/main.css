@@ -707,7 +707,7 @@ h6 {
   opacity: 0;
   right: 15px;
   bottom: 15px;
-  z-index: 99999;
+  z-index: 9000;
   background-color: var(--accent-color);
   width: 40px;
   height: 40px;
@@ -1989,4 +1989,243 @@ section,
 
 .aos-animate[data-aos="reveal-flip"] {
   transform: rotateY(0deg); /* Flips the card to the front when you scroll */
+}
+
+/*
+ * Custom Botpress Chat Bubble
+ * --------------------------------------------------
+ */
+
+/* This styles the message bubble itself */
+#bp-widget-launcher-button::before {
+  content: "Chat with us!"; /* <-- You can change this text */
+  position: absolute;
+  top: 50%;
+  right: 100%; /* Positions it to the left of the button */
+  transform: translateY(-50%);
+  margin-right: 15px; /* Space between bubble and button */
+  padding: 8px 12px;
+  background-color: var(--accent-color); /* Uses your brand color! */
+  color: var(--contrast-color);
+  border-radius: 8px;
+  font-family: var(--default-font);
+  font-size: 14px;
+  font-weight: 500;
+  white-space: nowrap;
+  opacity: 0; /* Starts hidden */
+  animation: fadeInBubble 0.5s 1.5s forwards, pulseBubble 2s 2.5s infinite;
+}
+
+/* This creates the little triangle pointer */
+#bp-widget-launcher-button::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 100%;
+  transform: translateY(-50%) translateX(15px); /* Moves it to the edge */
+  border-width: 6px;
+  border-style: solid;
+  border-color: transparent transparent transparent var(--accent-color);
+  opacity: 0; /* Starts hidden */
+  animation: fadeInBubble 0.5s 1.5s forwards;
+}
+
+/*
+ * Custom Botpress Chat Bubble
+ * --------------------------------------------------
+ */
+
+.custom-chat-bubble {
+  /* Positioning */
+  position: fixed;
+  z-index: 9998; /* Sits just behind the chat button (which is 9999) */
+  bottom: 25px;  /* <-- You may need to adjust this value */
+  right: 85px;   /* <-- You may need to adjust this value */
+  
+  /* The Bubble Style */
+  padding: 8px 12px;
+  background-color: var(--accent-color);
+  color: var(--contrast-color);
+  border-radius: 8px;
+  font-family: var(--default-font);
+  font-size: 14px;
+  font-weight: 500;
+  white-space: nowrap;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  cursor: pointer; /* Makes it clickable */
+
+  /* Starts hidden */
+  opacity: 0;
+  
+  /* Animations: Fade in, then pulse */
+  animation: fadeInBubble 0.5s 1.5s forwards, pulseBubble 2s 2.5s infinite;
+}
+
+/* The little triangle pointer */
+.custom-chat-bubble::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 100%; /* Attaches to the right side of the bubble */
+  transform: translateY(-50%);
+  border-width: 6px;
+  border-style: solid;
+  border-color: transparent transparent transparent var(--accent-color);
+}
+
+/* Re-using your animations */
+@keyframes fadeInBubble {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes pulseBubble {
+  0% {
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent-color), transparent 60%);
+  }
+  70% {
+    box-shadow: 0 0 0 10px color-mix(in srgb, var(--accent-color), transparent 0%);
+  }
+  100% {
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent-color), transparent 0%);
+  }
+}
+
+/*
+ * Botpress Z-Index Fix
+ * --------------------------------------------------
+ */
+
+/* This targets the entire chat window container */
+div#bp-web-widget-container {
+  z-index: 100000 !important;
+}
+
+/*
+ * Side CTA Popup (Aligned Left)
+ * --------------------------------------------------
+ */
+.side-popup-widget {
+  position: fixed;
+  bottom: 25px;
+  left: 25px; /* <-- Changed from right */
+  z-index: 9001;
+  width: 300px;
+}
+
+.side-popup-widget .popup-content {
+  background: var(--surface-color);
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+  border: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+  
+  /* Animation */
+  transition: all 0.3s ease-in-out;
+  opacity: 0;
+  transform: translateY(20px);
+  visibility: hidden;
+}
+
+.side-popup-widget .popup-close-btn {
+  position: absolute;
+  top: 5px;
+  right: 8px; /* <-- This can stay 'right' (inside the box) */
+  font-size: 24px;
+  color: #ccc;
+  transition: 0.3s;
+}
+.side-popup-widget .popup-close-btn:hover {
+  color: var(--accent-color);
+}
+
+.side-popup-widget h4 {
+  font-family: var(--heading-font);
+  font-weight: 700;
+  color: var(--heading-color);
+  margin-bottom: 10px;
+}
+
+.side-popup-widget p {
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+.side-popup-widget .btn-popup-call,
+.side-popup-widget .btn-popup-email {
+  display: block;
+  text-align: center;
+  padding: 10px;
+  border-radius: 4px;
+  font-weight: 600;
+  transition: 0.3s;
+  margin-bottom: 10px;
+  font-family: var(--heading-font);
+}
+
+.side-popup-widget .btn-popup-call {
+  background: var(--accent-color);
+  color: var(--contrast-color);
+}
+.side-popup-widget .btn-popup-call:hover {
+  background: color-mix(in srgb, var(--accent-color), transparent 25%);
+}
+
+.side-popup-widget .btn-popup-email {
+  background: color-mix(in srgb, var(--default-color), transparent 90%);
+  color: var(--accent-color);
+}
+.side-popup-widget .btn-popup-email:hover {
+  background: color-mix(in srgb, var(--default-color), transparent 85%);
+}
+
+.side-popup-widget .btn-popup-call i,
+.side-popup-widget .btn-popup-email i {
+  margin-right: 5px;
+}
+
+/* This is the "minimized" tab or "arrow" */
+.side-popup-widget .popup-open-btn {
+  position: absolute;
+  bottom: 0;
+  left: -25px; /* <-- Changed from right */
+  background: var(--accent-color);
+  color: var(--contrast-color);
+  padding: 10px 12px;
+  border-radius: 5px 5px 0 0; /* <-- This border is correct */
+  font-size: 14px;
+  font-weight: 600;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  transform: rotate(180deg);
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+
+  /* Animation */
+  transition: all 0.3s ease-in-out;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.side-popup-widget .popup-open-btn i {
+  margin-bottom: 5px;
+}
+
+/* --- The "Minimized" State --- */
+.side-popup-widget.popup-is-minimized .popup-content {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+}
+
+.side-popup-widget.popup-is-minimized .popup-open-btn {
+  left: 0; /* <-- Changed from right */
+  opacity: 1;
+  visibility: visible;
+}
+
+/* --- The "Visible" State --- */
+.side-popup-widget.popup-is-visible .popup-content {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
 }
