@@ -17,12 +17,11 @@
   --nav-font: "Open Sans",  sans-serif;
 }
 
-/* Global Colors - The following color variables are used throughout the website. Updating them here will change the color scheme of the entire website */
 :root { 
   --background-color: #ffffff; /* Background color for the entire website, including individual sections */
   --default-color: #444444; /* Default color used for the majority of the text content across the entire website */
   --heading-color: #222222; /* Color for headings, subheadings and title throughout the website */
-  --accent-color: #333333; /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
+  --accent-color: #584131; /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
   --surface-color: #ffffff; /* The surface color is used as a background of boxed elements within sections, such as cards, icon boxes, or other elements that require a visual separation from the global background. */
   --contrast-color: #ffffff; /* Contrast color for text, ensuring readability against backgrounds of accent, heading, or default colors. */
 }
@@ -150,13 +149,12 @@ h6 {
 }
 
 .header .topbar {
-  background-color: var(--accent-color);
+  background-color: #333333;
   height: 40px;
   padding: 0;
   font-size: 14px;
   transition: all 0.5s;
 }
-
 .header .topbar .contact-info i {
   font-style: normal;
   color: var(--contrast-color);
@@ -863,7 +861,7 @@ section,
 }
 
 .hero h1 {
-  color: var(--heading-color);
+  color: var(--accent-color);
   margin: 0;
   font-size: 48px;
   font-weight: 700;
@@ -871,11 +869,11 @@ section,
 }
 
 .hero h1 span {
-  color: var(--heading-color);
+  color: var(--accent-color);
 }
 
 .hero p {
-  color: color-mix(in srgb, #333333, transparent 30%);
+  color: var(--accent-color);
   margin: 5px 0 30px 0;
   font-size: 20px;
   font-weight: 400;
@@ -1180,7 +1178,7 @@ section,
   text-align: center;
   border: 1px solid color-mix(in srgb, var(--default-color), transparent 85%);
   padding: 80px 20px;
-  transition: border ease-in-out 0.3s;
+  transition: border ease-in-out 0.3s, transform 0.8s;
   height: 100%;
 }
 
@@ -1981,4 +1979,14 @@ section,
   position: relative;
   z-index: 2;
   color: #fff;
+}
+
+/* Custom Flip Reveal Animation for Services Section */
+[data-aos="reveal-flip"] {
+  transform: rotateY(180deg); /* Starts the card flipped backward */
+  backface-visibility: hidden;  /* Hides the text while it's backward */
+}
+
+.aos-animate[data-aos="reveal-flip"] {
+  transform: rotateY(0deg); /* Flips the card to the front when you scroll */
 }
