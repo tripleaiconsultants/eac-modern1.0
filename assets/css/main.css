@@ -149,7 +149,7 @@ h6 {
 }
 
 .header .topbar {
-  background-color: #333333;
+  background-color: var(--accent-color);
   height: 40px;
   padding: 0;
   font-size: 14px;
@@ -2039,7 +2039,7 @@ section,
   /* Positioning */
   position: fixed;
   z-index: 9998; /* Sits just behind the chat button (which is 9999) */
-  bottom: 25px;  /* <-- You may need to adjust this value */
+  bottom: 80px;  /* <-- You may need to adjust this value */
   right: 85px;   /* <-- You may need to adjust this value */
   
   /* The Bubble Style */
@@ -2061,6 +2061,17 @@ section,
   animation: fadeInBubble 0.5s 1.5s forwards, pulseBubble 2s 2.5s infinite;
 }
 
+#scroll-top {
+  display: none !important;
+}
+/*
+ * Move Botpress Icon Up
+ * --------------------------------------------------
+ */
+#bp-widget-launcher {
+  bottom: 75px !important;
+}
+
 /* The little triangle pointer */
 .custom-chat-bubble::after {
   content: "";
@@ -2072,6 +2083,8 @@ section,
   border-style: solid;
   border-color: transparent transparent transparent var(--accent-color);
 }
+
+
 
 /* Re-using your animations */
 @keyframes fadeInBubble {
@@ -2228,4 +2241,33 @@ div#bp-web-widget-container {
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
+}
+
+/*
+ * Testimonials Slider Arrow Navigation
+ * --------------------------------------------------
+ */
+.testimonials .swiper-button-next,
+.testimonials .swiper-button-prev {
+  /* This uses your site's main brand color */
+  color: var(--accent-color);
+  opacity: 0.7;
+  transition: 0.3s;
+}
+
+.testimonials .swiper-button-next:hover,
+.testimonials .swiper-button-prev:hover {
+  opacity: 1;
+}
+
+/* On smaller screens, move arrows down a bit */
+@media (max-width: 767px) {
+  .testimonials .swiper-button-next,
+  .testimonials .swiper-button-prev {
+    top: 90%;
+  }
+}
+
+div#bp-web-widget-container {
+  z-index: 100000 !important;
 }

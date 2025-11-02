@@ -136,7 +136,7 @@
 
       </div>
 
-    </section>```
+    </section>
 
 
     <!-- About Section -->
@@ -323,8 +323,7 @@
 
     </section><!-- /Services Section -->
 
-    <!-- Testimonials Section -->
-    <section id="testimonials" class="testimonials section dark-background">
+<section id="testimonials" class="testimonials section dark-background">
 
       <img src="assets/img/testimonials-bg.jpg" class="testimonials-bg" alt="">
 
@@ -338,11 +337,19 @@
               "autoplay": {
                 "delay": 5000
               },
-              "slidesPerView": "auto",
-              "pagination": {
-                "el": ".swiper-pagination",
-                "type": "bullets",
-                "clickable": true
+              "slidesPerView": 1,
+              "spaceBetween": 30,
+              "navigation": {
+                "nextEl": ".swiper-button-next",
+                "prevEl": ".swiper-button-prev"
+              },
+              "breakpoints": {
+                "768": {
+                  "slidesPerView": 2
+                },
+                "992": {
+                  "slidesPerView": 3
+                }
               }
             }
           </script>
@@ -350,7 +357,46 @@
 
             <div class="swiper-slide">
               <div class="testimonial-item">
-                <h3>Maria Georgiou</h3>
+                <h3>David Levy 🇮🇱</h3>
+                <h4>Tech Entrepreneur</h4>
+                <div class="stars">
+                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                </div>
+                <p>
+                  <i class="bi bi-quote quote-icon-left"></i>
+                  <span>Moving my business to Limassol was complex. Andros handled all our SME insurance and health plans flawlessly. His English is perfect and he understood exactly what we needed.</span>
+                  <i class="bi bi-quote quote-icon-right"></i>
+                </p>
+              </div>
+            </div><div class="swiper-slide">
+              <div class="testimonial-item">
+                <h3>Svetlana Petrova 🇷🇺</h3>
+                <h4>Paphos Resident</h4>
+                <div class="stars">
+                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                </div>
+                <p>
+                  <i class="bi bi-quote quote-icon-left"></i>
+                  <span>Andros is the most reliable agent. He helped with our home and car insurance. Everything was fast, clear, and in very good English. He is always on WhatsApp to answer questions.</span>
+                  <i class="bi bi-quote quote-icon-right"></i>
+                </p>
+              </div>
+            </div><div class="swiper-slide">
+              <div class="testimonial-item">
+                <h3>Chen Wei 🇨🇳</h3>
+                <h4>Investor</h4>
+                <div class="stars">
+                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                </div>
+                <p>
+                  <i class="bi bi-quote quote-icon-left"></i>
+                  <span>I needed comprehensive health and property insurance for my family's relocation. Mr. Andros provided exceptional service, explaining all policies clearly. Very professional.</span>
+                  <i class="bi bi-quote quote-icon-right"></i>
+                </p>
+              </div>
+            </div><div class="swiper-slide">
+              <div class="testimonial-item">
+                <h3>Maria Georgiou 🇨🇾</h3>
                 <h4>Business Owner</h4>
                 <div class="stars">
                   <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
@@ -361,11 +407,9 @@
                   <i class="bi bi-quote quote-icon-right"></i>
                 </p>
               </div>
-            </div><!-- End testimonial item -->
-
-            <div class="swiper-slide">
+            </div><div class="swiper-slide">
               <div class="testimonial-item">
-                <h3>Christos Papadopoulos</h3>
+                <h3>Christos Papadopoulos 🇨🇾</h3>
                 <h4>Limassol Resident</h4>
                 <div class="stars">
                   <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
@@ -376,11 +420,9 @@
                   <i class="bi bi-quote quote-icon-right"></i>
                 </p>
               </div>
-            </div><!-- End testimonial item -->
-
-            <div class="swiper-slide">
+            </div><div class="swiper-slide">
               <div class="testimonial-item">
-                <h3>Elena Constantinou</h3>
+                <h3>Elena Constantinou 🇨🇾</h3>
                 <h4>Family Client</h4>
                 <div class="stars">
                   <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
@@ -391,16 +433,18 @@
                   <i class="bi bi-quote quote-icon-right"></i>
                 </p>
               </div>
-            </div><!-- End testimonial item -->
+            </div></div>
+          
+          <div class="swiper-button-next"></div>
+          <div class="swiper-button-prev"></div>
 
-          </div>
-          <div class="swiper-pagination"></div>
         </div>
 
       </div>
 
-    </section><!-- /Testimonials Section -->
+    </section>
 
+    
     <!-- Faq Section -->
     <section id="faq" class="faq section light-background">
 
@@ -553,6 +597,15 @@
                   <textarea class="form-control" name="message" rows="10" id="message-field" required=""></textarea>
                 </div>
 
+                <div class="col-md-12">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="1" id="gdpr-consent" name="gdpr-consent" required>
+                    <label class="form-check-label" for="gdpr-consent">
+                      I consent to my data being processed and stored in line with the <a href="privacy-policy.html" target="_blank">Privacy Policy</a>.
+                    </label>
+                    <div class="invalid-feedback">You must agree before submitting.</div>
+                  </div>
+                </div>
                 <div class="col-md-12 text-center">
                   <div class="loading">Loading</div>
                   <div class="error-message"></div>
